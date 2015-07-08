@@ -1,10 +1,12 @@
 SSHKit::Backend::Netssh.configure do |ssh|
   ssh.ssh_options = {
     :user => 'root',
-    :password => 'passroot',
+    # passwordをコメントアウトしてpassphreaseを追加
+    # シングルクォートの中はssh-keygenにて指定した文字列を記載
+    :passphrase => 'rootpass',
+    # :password => '****',
   }
 end
-# ホスト名がcapistranoのサーバを追加
-role :client, %w{chef openvz}
- 
+
+role :client, %w{openvz}
 
