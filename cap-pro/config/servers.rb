@@ -4,6 +4,7 @@ SSHKit::Backend::Netssh.configure do |ssh|
     :password => 'passroot',
   }
 end
- 
-# roleにホスト名がchefとopenvzの複数を指定するように変更してみた。
+# ホスト名がcapistranoのサーバを追加
 role :client, %w{chef openvz}
+ 
+
