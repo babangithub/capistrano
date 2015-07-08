@@ -1,12 +1,20 @@
 load './config/servers.rb'
- 
-task :mkdir do
-  dir = '/root/test'
- 
-  # 同時実行数を2サーバとし、インターバルを3秒とする
-  on roles( :client ), in: :groups, limit: 2, wait: 3 do
-    execute "mkdir -p #{dir}"
-    execute "ls -ld #{dir}"
-  end
+
+namespace :exec do
+        dir = "/root/test"
+
+        desc "test"
+        task :mkdir do
+
+                on roles( :client ) do
+                        execute "mkdir -p #{dir}"
+                end
+        end
+
+        task :ls do
+                on roles( :client ) do
+                        execute "ls -ld #{dir}"
+                end
+        end
 end
- 
+
